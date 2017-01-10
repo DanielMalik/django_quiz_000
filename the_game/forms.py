@@ -11,3 +11,4 @@ class AnswerForm(forms.Form):
         widget=forms.TextInput,
         required=True,
     )
+

@@ -1,5 +1,5 @@
 from django.views import View
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from random import randint
 from django.http.response import HttpResponse
 from the_game.models import Question, Category, GRADE
@@ -33,6 +33,8 @@ def ask():
         else:
             ask()
 
+count = 0
+
 # @csrf_exempt
 class Stage_One(View):
     count = 0
@@ -43,11 +45,37 @@ class Stage_One(View):
         c = will_ask['comment']
         a = will_ask['answer']
         b = will_ask['category']
+        # trzeba przekazać odpowiedz 'a' metoda post
         #print(will_ask)
         ctx = {'form': form, 'qqq': q, 'ccc':c, 'aaa':a, 'bbb':b}
         print(ctx)
 
         return render(request, "game_templates/stage_one.html", ctx)
+
+    def post(self, request):
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            player = form.cleaned_data['player_answer']
+            print(form.data['asked_question_answer'])
+            prev_answer = form.data['asked_question_answer']
+
+            if player == prev_answer:
+                print("doszlo")
+                #count += 1
+                form = AnswerForm()
+                will_ask = ask()
+                q = will_ask['question']
+                c = will_ask['comment']
+                a = will_ask['answer']
+                b = will_ask['category']
+                # trzeba przekazać odpowiedz 'a' metoda post
+                # print(will_ask)
+                ctx = {'form': form, 'qqq': q, 'ccc': c, 'aaa': a, 'bbb': b}
+                print(ctx)
+                return render(request, "game_templates/stage_one.html", ctx)
+
+            else:
+                return HttpResponse("wrong")
 
 
 

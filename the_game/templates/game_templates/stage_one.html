@@ -31,7 +31,7 @@
 
                 {% csrf_token %}
                 {{ form.as_p }}
-
+                <input type="hidden" value="{{ aaa }}" name="asked_question_answer">
                 <input type="submit" value="Search">
             </form>
         </div>
