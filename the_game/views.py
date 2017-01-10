@@ -12,6 +12,8 @@ already_asked = list()
 
 def ask():
     id = randint(1, qqnt)
+    print(qqnt)
+
     if id not in already_asked:
         to_ask = Question.objects.get(pk=id)
         #print(to_ask)
