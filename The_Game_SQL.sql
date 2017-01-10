@@ -1,0 +1,3 @@
+-- CREATE DATABASE Game_db_1;
+
+-- ALTER SCHEMA `Game_db_1`  DEFAULT CHARACTER SET utf8 ;
