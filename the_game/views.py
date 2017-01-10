@@ -39,8 +39,12 @@ class Stage_One(View):
     def get(self, request):
         form = AnswerForm()
         will_ask = ask()
+        q = will_ask['question']
+        c = will_ask['comment']
+        a = will_ask['answer']
+        b = will_ask['category']
         #print(will_ask)
-        ctx = {'form': form, 'will_ask': will_ask}
+        ctx = {'form': form, 'qqq': q, 'ccc':c, 'aaa':a, 'bbb':b}
         print(ctx)
 
         return render(request, "game_templates/stage_one.html", ctx)
