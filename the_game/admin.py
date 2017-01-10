@@ -5,7 +5,7 @@ from the_game.models import Question, Category
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ("category", "grade", "answer", "query", "comment")
+    list_display = ( "query", "category", "grade", "query", "comment", "answer")
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

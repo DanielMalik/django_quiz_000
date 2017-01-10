@@ -1,0 +1,74 @@
+{% extends 'game_templates/base.html' %}
+
+{% block title %}
+    Stage One
+{% endblock %}
+
+{% block content %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Runda pierwsza - pytania dla wszystkich
+        </div>
+        {% for k,d in will_ask.items %}
+        <div id="category">
+
+            <p> {{ d }} </p>
+
+        </div>
+
+        <div id="query">
+
+            <h3> {{ question }} </h3>
+
+
+        </div>
+        {% endfor %}
+
+
+        <div id="player" class="panel-body">
+
+            <form action="{% url 'game' %}" method="post">
+
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input type="submit" value="Search">
+            </form>
+        </div>
+
+        {% for k in will_ask %}
+
+        <div id="correct_answer">
+
+                <p> {{ k.answer }} </p>
+
+        </div>
+
+        <div id="comment">
+
+                <p> {{ comment }} </p>
+
+        </div>
+
+        {% endfor %}
+
+
+    </div>
+{% endblock %}
+{% block content_js %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                $('#bands-table').DataTable({
+                    "bFilter": true,
+                    "sDom": "lfrtip"
+                });
+            }
+            catch (err) {
+            }
+        });
+    </script>
+{% endblock %}
+
+
+

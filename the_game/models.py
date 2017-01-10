@@ -5,7 +5,8 @@ GRADE = (
     (0, 'easy'),
     (1, 'normal'),
     (2, 'hard'),
-    (3, 'unfair')
+    (3, 'unfair'),
+    (4, 'tricky')
 )
 
 class Question(models.Model):
