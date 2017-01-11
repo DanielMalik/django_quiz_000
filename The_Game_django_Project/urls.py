@@ -16,10 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.views import logout_then_login
-from the_game.views import Stage_One
+from the_game.views import Stage_One, StageOneMF
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^logout/$', logout_then_login, name='site-logout'),
     url(r'^game/$', Stage_One.as_view(), name='game'),
+    url(r'^game_modelform/$', StageOneMF.as_view(), name='game_mf'),
 ]

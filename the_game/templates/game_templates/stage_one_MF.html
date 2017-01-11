@@ -10,43 +10,16 @@
             Runda pierwsza - pytania dla wszystkich
         </div>
 
-        <div id="category">
-
-            <p> {{ bbb }} </p>
-
-        </div>
-
-        <div id="query">
-
-            <h3> {{ qqq }} </h3>
-
-
-        </div>
-
-
 
         <div id="player" class="panel-body">
 
-            <form action="{% url 'game' %}" method="post">
+            <form action="{% url 'game_mf' %}" method="post">
 
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="hidden" value="{{ aaa }}" name="asked_question_answer">
+                <input type="text" placeholder="your answer" name="player_answer">
                 <input type="submit" value="Search">
             </form>
-        </div>
-
-
-        <div id="correct_answer">
-
-                <p> {{ aaa }} </p>
-
-        </div>
-
-        <div id="comment">
-
-                <p> {{ ccc }} </p>
-
         </div>
 
 
